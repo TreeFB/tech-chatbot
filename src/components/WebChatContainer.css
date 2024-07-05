@@ -1,0 +1,79 @@
+#webchat {
+    flex: 1; /*Take up remaining space */
+    background-color: #e4f2e4; /* Optional background color */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24), 0 0 2px rgba(0, 0, 0, 0.1); /* Adjusted box-shadow */
+    border: 1px solid #ccc;
+    max-height: 90%;
+    max-width: 100%;
+    padding: 10px;
+  }
+
+/* Icons */
+.webchat__send-icon,
+.webchat__attachment-icon__icon {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* Send box */
+.webchat__send-box {
+  position: relative;
+  border-radius: 8px;
+}
+
+.webchat__send-box-text-box {
+  align-items: start  !important;
+  padding-top: 15px !important;
+}
+.webchat__send-box__text-box {
+  align-items: start !important;
+  padding-top: 15px !important;
+}
+
+/* Send box bottom line */
+.webchat__send-box::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px; /* Adjust the height of the line as needed */
+  background: linear-gradient(to right, #6ae56a, #006400); /* Green gradient */
+}
+
+/* Bubble content */
+.webchat__bubble__content {
+  border-radius: 8px !important; /* Increase specificity for bubble content */
+}
+
+
+.ac-pushButton {
+  background-color: #61a321 !important;
+  color: white !important;
+  transition: background-color 0.3s, transform 0.2s !important;
+}
+
+.ac-pushButton:hover {
+  background-color:  #66ca02 !important;
+}
+
+.ac-pushButton:focus {
+  box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
+}
+
+
+.webchat__send-box-text-box__input,
+.webchat__auto-resize-textarea,
+.webchat__send-box-text-box__text-area 
+ {
+  /* Your styles here */
+  height: 100% !important;
+}
+
+.webchat__suggested-actions__button {
+  color: green !important;
+  border-color: green !important;
+  border-radius: 8px !important;
+  height: 32px !important;
+}

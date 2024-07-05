@@ -1,0 +1,152 @@
+html, body {
+  font-family:  "Rubik", sans-serif;
+  font-weight: 300;
+  font-size: small;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.root {
+  width: 98vw;
+}
+
+/* Basic styling for the container */
+.container {
+  padding-top: 1vh;
+  display: flex;
+  justify-content: space-between;
+  height: 96vh;
+  width: 96vw;
+  gap: 1vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.column {
+  padding: 10px;
+  box-sizing: border-box; 
+  background-color: #e5f2e5; 
+  border-radius: 8px; 
+  display: flex;
+  flex-direction: column;
+  transition: flex 0.5s ease-out; 
+}
+
+.column-1 {
+  flex: 0 0 50%;
+}
+
+.column-2 {
+  flex: 0 0 30%;
+}
+
+.column-3 {
+  flex: 0 0 20%;
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  
+}
+
+
+
+
+h1 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  color: darkslategrey;
+  padding-left: 5px;
+}
+
+h2 {
+  position: relative;
+  padding-top: 10px; /* Adjust as needed */
+  margin-top: 0px;
+  margin-bottom: 10px;
+  color: darkslategrey;
+}
+
+
+h2:first {
+  margin-top: -100px;
+}
+
+
+h3 {
+  padding-bottom: 1px;
+  padding-top: 5px;
+  margin-top: 0px;
+  margin-bottom: 0;
+  color: darkslategrey;
+}
+
+/* .horizontal h3:first-child {
+  margin-right: auto; 
+}
+
+.horizontal h3:last-child {
+  margin-left: auto; 
+} */
+
+/* .horizontal h3:last-child {
+  width: 50%;
+  margin-left: auto;
+} */
+
+.fullscreen-button {
+  padding: 5px;
+  align-self: flex-end;
+  color: green;
+}
+.fullscreen-button:hover {
+  color:  #66ca02;
+  cursor: pointer;
+}
+
+.fullscreen .column-1 {
+  flex: 0 0 102%;
+}
+
+.fullscreen .column-2,
+.fullscreen .column-3 {
+  display: none;
+}

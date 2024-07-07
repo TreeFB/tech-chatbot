@@ -5,7 +5,11 @@
         "allowedRoles": ["anonymous"],
         "allowedMethods": ["get", "post", "put", "delete", "options"],
         "allowedForwardedHosts": ["techbot.forrestbrown.co.uk"]
-        }
+        },
+        {
+            "route": "/.auth/login/github",
+            "statusCode": 404
+          }
     ],
     "navigationFallback": {
         "rewrite": "/index.html"

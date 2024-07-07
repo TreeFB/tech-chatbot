@@ -21,5 +21,10 @@
                 }
             }
         }
+    },
+    "forwardingGateway": {
+        "allowedForwardedHosts": [
+            "techbot.forrestbrown.co.uk"
+        ]
     }
 }

@@ -81,12 +81,12 @@ function App() {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + directLineToken // Replace with your actual token or dynamic token retrieval
           },
-          body: {
+          body: JSON.stringify({
               user: { 
                   id: "dl_techbot", // user id must start with 'dl_'
                   name: "user" 
               }
-          }
+          })
         });
         const { token } = await res.json();
         setDlt(window.WebChat.createDirectLine({ token }));

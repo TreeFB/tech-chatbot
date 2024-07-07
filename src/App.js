@@ -75,12 +75,17 @@ function App() {
 
         const directLineToken = process.env.REACT_APP_DIRECT_LINE_TOKEN;
 
-
         const res = await fetch('https://directline.botframework.com/v3/directline/tokens/generate', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + directLineToken // Replace with your actual token or dynamic token retrieval
+          },
+          body: {
+              user: { 
+                  id: "dl_techbot", // user id must start with 'dl_'
+                  name: "user" 
+              }
           }
         });
         const { token } = await res.json();

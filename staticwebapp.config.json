@@ -1,28 +1,34 @@
 {
     "routes": [
         {
-        "route": "/*",
-        "allowedRoles": ["anonymous"],
-        "allowedMethods": ["get", "post", "put", "delete", "options"],
-        "allowedForwardedHosts": ["techbot.forrestbrown.co.uk"]
+            "route": "/*",
+            "allowedRoles": ["authenticated"]
         },
         {
             "route": "/.auth/login/github",
             "statusCode": 404
-          }
+        }        
     ],
-    "navigationFallback": {
-        "rewrite": "/index.html"
+    "responseOverrides": {
+        "401": {
+            "statusCode": 302,
+            "redirect": "/.auth/login/aad"
+        }
     },
     "auth": {
-    "identityProviders": {
-      "azureActiveDirectory": {
-        "registration": {
-          "openIdIssuer": "https://login.microsoftonline.com/4377833b-ebc7-4d61-9e5b-ed558f5f93a4/v2.0",
-          "clientIdSettingName": "AZURE_CLIENT_ID",
-          "clientSecretSettingName": "AZURE_CLIENT_SECRET"
+        "identityProviders": {
+            "azureActiveDirectory": {
+                "registration": {
+                    "openIdIssuer": "https://login.microsoftonline.com/4377833b-ebc7-4d61-9e5b-ed558f5f93a4/v2.0",
+                    "clientIdSettingName": "AZURE_CLIENT_ID",
+                    "clientSecretSettingName": "AZURE_CLIENT_SECRET"
+                }
+            }
         }
-      }
+    },
+    "forwardingGateway": {
+        "allowedForwardedHosts": [
+            "techbot.forrestbrown.co.uk"
+        ]
     }
-  }
 }

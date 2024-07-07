@@ -1,0 +1,13 @@
+{
+    "routes": [
+        {
+        "route": "/*",
+        "allowedRoles": ["anonymous"],
+        "allowedMethods": ["get", "post", "put", "delete", "options"],
+        "allowedForwardedHosts": ["techbot.forrestbrown.co.uk"]
+        }
+    ],
+    "navigationFallback": {
+        "rewrite": "/index.html"
+    }
+}

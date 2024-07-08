@@ -71,7 +71,7 @@ function App() {
         <PromptButtonContainer dlt={dlt} />
       </div>
     </div>
-      <div className={`column column-3 ${viewHistory ? 'history-visible' : 'history-hidden'}`}>
+      {/*<div className={`column column-3 ${viewHistory ? 'history-visible' : 'history-hidden'}`}>
         <div>
           <h1>History</h1>
           <span className="history-close-button material-symbols-outlined" onClick={setViewHistory(false)}>history</span>
@@ -81,7 +81,7 @@ function App() {
           <br/>Functionality in Development.
           <br/>Please check back soon!
         </p>
-      </div>
+      </div>*/}
     </div>
 );
 }

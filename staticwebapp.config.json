@@ -1,8 +1,16 @@
 {
     "routes": [
         {
-            "route": "/*",
+            "route": "/*.{html,js,css}",
             "allowedRoles": ["authenticated"]
+        },
+        {
+            "route": "/.auth/*",
+            "allowedRoles": []
+        },
+        {
+            "route": "/*.{json,ts}",
+            "allowedRoles": []
         }    
     ],
     "responseOverrides": {

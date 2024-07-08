@@ -1,6 +1,10 @@
 {
     "routes": [
         {
+            "route": "/",
+            "allowedRoles": ["authenticated"]
+        },
+        {
             "route": "/*.{html,js,css}",
             "allowedRoles": ["authenticated"]
         },
@@ -13,6 +17,10 @@
             "allowedRoles": []
         }    
     ],
+    "navigationFallback": {
+        "rewrite": "/index.html",
+        "exclude": ["/*.{png,jpg,gif,css}"]
+    },    
     "responseOverrides": {
         "401": {
             "statusCode": 302,

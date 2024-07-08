@@ -66,7 +66,7 @@ function App() {
       <div className="column column-2">
         <div>
           <h1>Prompts</h1>
-          <span className="history-button material-symbols-outlined" {/*onClick={setViewHistory(true)}*/}>history</span>
+          <span className="history-button material-symbols-outlined" >history</span>
         </div>        
         <PromptButtonContainer dlt={dlt} />
       </div>

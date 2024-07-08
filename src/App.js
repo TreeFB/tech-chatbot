@@ -66,7 +66,7 @@ function App() {
     <div className={`container ${isFullscreen ? 'fullscreen' : ''}`}>
       <div className="column column-1">
         <div className="columnHeader">
-          <h1>ForrestBrown - Techbot</h1>
+          <h1><img src="logo192.png" width="32px" className='fb-logo'/>ForrestBrown Techbot</h1>
           <span className="fullscreen-button material-symbols-outlined" onClick={handleFullscreen}>fullscreen</span>
         </div>
         <WebChatContainer dlt={dlt} />

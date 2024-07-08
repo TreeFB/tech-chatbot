@@ -43,6 +43,12 @@ html, body {
   }
 }
 
+
+.fb-logo {
+  width: 32px;
+  margin-right: 5px;
+}
+
 .root {
   width: 98vw;
 }

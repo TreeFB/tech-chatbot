@@ -109,18 +109,20 @@ function App() {
   return (
     <div className={`container ${isFullscreen ? 'fullscreen' : ''}`}>
       <div className="column column-1">
-        <h1>ForrestBrown - Bot Webchat</h1>
-        <span className="fullscreen-button material-symbols-outlined" onClick={handleFullscreen}>fullscreen</span>
+        <div>
+          <h1>ForrestBrown - Techbot</h1>
+          <span className="fullscreen-button material-symbols-outlined" onClick={handleFullscreen}>fullscreen</span>
+        </div>
         <WebChatContainer dlt={dlt} />
       </div>
       <div className="column column-2">
         <h1>Prompts</h1>
         <PromptButtonContainer dlt={dlt} />
       </div>
-      <div className="column column-3">
+      {/*<div className="column column-3">
         <h1>History</h1>
           <p style={{ textAlign: "center" }}><span style={{ color: "green" }} className="material-symbols-outlined">construction</span><br/>Functionality in Development.<br/>Please check back soon!</p>
-      </div>
+      </div>*/}
     </div>
   );
 }

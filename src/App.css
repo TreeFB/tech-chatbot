@@ -72,11 +72,11 @@ html, body {
 }
 
 .column-1 {
-  flex: 0 0 50%;
+  flex: 0 0 80%;
 }
 
 .column-2 {
-  flex: 0 0 30%;
+  flex: 0 0 20%;
 }
 
 .column-3 {

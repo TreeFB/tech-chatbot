@@ -102,8 +102,19 @@ select:hover{
 
 #button_container {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%;
+  justify-content: end;
 }
 
+.prompt-section {
+  align-items: end;
+}
+
+.prompt-section-hidden {
+  display:none;
+}
 
 .button_icon {
   display: flex;

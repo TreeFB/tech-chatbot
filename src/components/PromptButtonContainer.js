@@ -177,14 +177,10 @@ const PromptButtonContainer = ({ dlt }) => {
 
 
   return (
-    <div>
-    {/* <Components.Composer directLine={dlt}>
-    <GenButton title="Help?" message="Help..."/>
-    <GenButtonPrompt title="Help?" message="Help..."/>
-    </Components.Composer> */}
     <div id="button_container">
+      <div className="prompt-section prompt-section-projectlist">
       <div className="header-with-tooltip">
-        <h2>Project List Summary</h2> 
+        <h2>Project List Assistant</h2> 
         <div className="tooltip-container">
           <span className="question-mark-icon material-symbols-outlined">question_mark</span>
           <div className="tooltip-content">
@@ -217,8 +213,10 @@ const PromptButtonContainer = ({ dlt }) => {
           <GenButtonPrompt disabled={true} icon="sync" title="Switch" message="Summarise a different file."/>
           <GenButtonPrompt title="Save" icon="save" message="Format the text in CSV format. Keep the text unchanged and include column headers."/>
         </div>
+      </div>
+      <div className="prompt-section prompt-section-casestudy">
         <div className="header-with-tooltip">
-          <h2>Project Skeleton</h2>
+          <h2>Case Study Assistant</h2>
           <div className="tooltip-container">
             <span className="question-mark-icon material-symbols-outlined">question_mark</span>
             <div className="tooltip-content">
@@ -249,6 +247,8 @@ const PromptButtonContainer = ({ dlt }) => {
             <GenButtonPrompt title="Regenerate Skeleton" icon="skeleton" message="Make these changes to the <baseline|advance|uncertainty|work down> and regenerate the project case study skeleton based on the original chat prompt."/>
             <GenButtonPrompt title="Regenerate Section" icon="humerus" message="Make these changes to the case study section being reviewed and regenerate the section based on the original chat prompt."/>
           </div>
+      </div>
+      <div className="prompt-section prompt-section-general">
           <div className="header-with-tooltip">
           <h2>Quick Actions</h2>
           <div className="tooltip-container">
@@ -264,7 +264,7 @@ const PromptButtonContainer = ({ dlt }) => {
             <GenButton title="Logout" icon="logout" message="!logout"/>
             </Components.Composer>
           </div>
-    </div>
+      </div>
     </div>
     
   );

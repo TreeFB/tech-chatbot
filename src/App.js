@@ -16,6 +16,14 @@ function App() {
     setIsFullscreen(!isFullscreen);
   };
 
+  const showHistory = () => {
+    setViewHistory(true);
+  };
+  
+  const hideHistory = () => {
+    setViewHistory(false);
+  };
+
   useEffect(() => {
     const fetchDirectLineToken = async () => {
       try {
@@ -57,31 +65,33 @@ function App() {
     <div>
     <div className={`container ${isFullscreen ? 'fullscreen' : ''}`}>
       <div className="column column-1">
-        <div>
+        <div className="columnHeader">
           <h1>ForrestBrown - Techbot</h1>
           <span className="fullscreen-button material-symbols-outlined" onClick={handleFullscreen}>fullscreen</span>
         </div>
         <WebChatContainer dlt={dlt} />
       </div>
       <div className="column column-2">
-        <div>
+        <div className="columnHeader">
           <h1>Prompts</h1>
-          <span className="history-button material-symbols-outlined" onClick={setViewHistory(false)} >history</span>
+          <span className="history-button material-symbols-outlined" onClick={showHistory} >history</span>
         </div>        
         <PromptButtonContainer dlt={dlt} />
       </div>
     </div>
-      {/*<div className={`column column-3 ${viewHistory ? 'history-visible' : 'history-hidden'}`}>
-        <div>
+    <div className={`container sidebar-container ${viewHistory ? 'history-visible' : 'history-hidden'}`}>
+      <div className={`sidebar history-sidebar column`}>
+        <div className="columnHeader">
           <h1>History</h1>
-          <span className="history-close-button material-symbols-outlined" onClick={setViewHistory(false)} >close</span>
+          <span className="history-close-button material-symbols-outlined" onClick={hideHistory} >close</span>
         </div>          
-        <p style={{ textAlign: "center" }}>
-          <span style={{ color: "green" }} className="material-symbols-outlined">construction</span>
+        <div className="history-sidebar-list" style={{ textAlign: "center" }}>
+          <div style={{ color: "green" }} className="material-symbols-outlined">construction</div>
           <br/>Functionality in Development.
           <br/>Please check back soon!
-        </p>
-      </div>*/}
+        </div>
+      </div>
+    </div>
     </div>
 );
 }

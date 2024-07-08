@@ -10,7 +10,7 @@ function App() {
   const [dlt, setDlt] = useState(null);
   const [webChatReady, setWebChatReady] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  //const [viewHistory, setViewHistory] = useState(false);
+  const [viewHistory, setViewHistory] = useState(false);
 
   const handleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
@@ -66,7 +66,7 @@ function App() {
       <div className="column column-2">
         <div>
           <h1>Prompts</h1>
-          <span className="history-button material-symbols-outlined" >history</span>
+          <span className="history-button material-symbols-outlined" onClick={setViewHistory(false)} >history</span>
         </div>        
         <PromptButtonContainer dlt={dlt} />
       </div>
@@ -74,7 +74,7 @@ function App() {
       {/*<div className={`column column-3 ${viewHistory ? 'history-visible' : 'history-hidden'}`}>
         <div>
           <h1>History</h1>
-          <span className="history-close-button material-symbols-outlined" onClick={setViewHistory(false)}>history</span>
+          <span className="history-close-button material-symbols-outlined" onClick={setViewHistory(false)} >close</span>
         </div>          
         <p style={{ textAlign: "center" }}>
           <span style={{ color: "green" }} className="material-symbols-outlined">construction</span>

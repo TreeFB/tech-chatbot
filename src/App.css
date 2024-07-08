@@ -75,6 +75,10 @@ html, body {
   flex: 0 0 80%;
 }
 
+.column-1 h1{
+  float: left;
+}
+
 .column-2 {
   flex: 0 0 20%;
 }
@@ -136,6 +140,7 @@ h3 {
   padding: 5px;
   align-self: flex-end;
   color: green;
+  float: right;
 }
 .fullscreen-button:hover {
   color:  #66ca02;

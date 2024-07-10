@@ -11,6 +11,8 @@ function App() {
   const [webChatReady, setWebChatReady] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [viewHistory, setViewHistory] = useState(false);
+  //const [conversationId, setconversationId] = useState(false);
+
 
   const handleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
@@ -24,9 +26,30 @@ function App() {
     setViewHistory(false);
   };
 
+
+
   useEffect(() => {
     const fetchDirectLineToken = async () => {
       try {
+
+        //get user details
+        const userResponse = await fetch('.auth/me', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+        var userId, userName;
+        var user = await userResponse.json();
+        if (userResponse.status!=200 || !user.clientPrincipal.userId) {
+          userId = crypto.randomUUID();
+          userName = userId;
+        } else {
+          userId = user.clientPrincipal.userId;
+          userName = user.clientPrincipal.userDetails;
+        }
+
+
 
         const directLineToken = process.env.REACT_APP_DIRECT_LINE_TOKEN;
 
@@ -38,8 +61,9 @@ function App() {
           },
           body: JSON.stringify({
               user: { 
-                  id: "dl_techbot", // user id must start with 'dl_'
-                  name: "user" 
+                  id: "dl_"+userId, // user id must start with 'dl_'
+                  name: userName,
+                  role: "user" 
               }
           })
         });

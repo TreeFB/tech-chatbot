@@ -51,6 +51,7 @@ function App() {
           },
           body: JSON.stringify({
               user: { 
+                  aadObjectId: userId,
                   id: "dl_"+userId, // user id must start with 'dl_'
                   name: userName,
                   role: "user" 

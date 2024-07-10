@@ -11,9 +11,7 @@ function App() {
   const [webChatReady, setWebChatReady] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [viewHistory, setViewHistory] = useState(false);
-  //const [conversationId, setconversationId] = useState(false);
-
-
+  
   const handleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
   };
@@ -26,31 +24,24 @@ function App() {
     setViewHistory(false);
   };
 
-
-
   useEffect(() => {
     const fetchDirectLineToken = async () => {
       try {
 
         //get user details
-        const userResponse = await fetch('.auth/me', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        });
         var userId, userName;
-        var user = await userResponse.json();
-        if (userResponse.status!=200 || !user.clientPrincipal.userId) {
+        const userResponse = await fetch('.auth/me');
+        if (userResponse.status!=200 || !userResponse.headers.get("content-type").includes("json")) {
           userId = crypto.randomUUID();
           userName = userId;
         } else {
+          var userContent = await userResponse.json();
+          var {user} = userContent;
           userId = user.clientPrincipal.userId;
           userName = user.clientPrincipal.userDetails;
         }
 
-
-
+        //get bot token
         const directLineToken = process.env.REACT_APP_DIRECT_LINE_TOKEN;
 
         const res = await fetch('https://directline.botframework.com/v3/directline/tokens/generate', {

@@ -35,7 +35,7 @@ function App() {
           userId = crypto.randomUUID();
           userName = userId;
         } else {
-          var {user} = await userResponse.json();
+          var user = await userResponse.json();
           userId = user.clientPrincipal.userId;
           userName = user.clientPrincipal.userDetails;
         }

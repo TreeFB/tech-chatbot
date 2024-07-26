@@ -1,0 +1,22 @@
+#history_container { 
+    width: 100%;
+}
+
+.history-sidebar-list {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  #history_list_container {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: calc(100vh - 300px); 
+    margin-bottom: 20px;
+  }
+  
+  .category-list {
+    margin: 0;
+    padding: 0;
+  }

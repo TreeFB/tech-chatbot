@@ -77,3 +77,81 @@
   border-radius: 8px !important;
   height: 32px !important;
 }
+
+.app__div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Align items vertically in the center */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  margin-bottom: 5px;
+
+}
+
+.app__div:hover {
+  background-color: rgba(102, 202, 2,0.8);
+}
+
+.app__text {
+  flex: 6;
+  overflow:hidden;
+}
+
+.app__dts {
+  flex: 2;
+  font-size: 11px;
+}
+
+.app__icon {
+  flex: 1;
+}
+
+.historyButtons.material-symbols-outlined {
+  margin-left: 10px;
+  color: green; /* White text color */
+  border: none; /* Remove default button border */
+  transition: font-size 0.3s ease;
+  font-size: 24px; /* Initial size of the icon */
+  display: inline-block;
+}
+
+.historyButtons:hover {
+  transform: scale(1.2); 
+}
+
+
+/* For the reactions / Cutting convo */
+
+.botActivityDecorator {
+  min-height: 60px;
+  position: relative;
+}
+
+.botActivityDecorator .botActivityDecorator__content {
+  padding-left: 40px;
+}
+
+.botActivityDecorator .botActivityDecorator__buttonBar {
+  list-style-type: none;
+  margin: 0 0 0 10px;
+  padding: 0;
+  position: absolute;
+}
+
+
+.botActivityDecorator .botActivityDecorator__buttonBar .botActivityDecorator__button {
+  font-size: 10px;
+  margin-bottom: 2px;
+  padding: 5px 5px 5px;
+  border: none !important;
+  background-color: rgba(0, 0, 0, 0);
+  
+}
+
+.botActivityDecorator__button .material-symbols-outlined {
+  font-size: 16px;
+  color: green;
+}

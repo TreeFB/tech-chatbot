@@ -27,8 +27,8 @@ function App() {
         const userResponse = await fetch('.auth/me');
         
         if (userResponse.status!=200 || !userResponse.headers.get("content-type").includes("json")) {
-          // userId = crypto.randomUUID();
-          userId = "acba2c25-7cfd-43c4-acf2-681e2ccdc249"; // DEBUG
+          userId = crypto.randomUUID();
+          //userId = "acba2c25-7cfd-43c4-acf2-681e2ccdc249"; // DEBUG
           userName = userId;
         } else {
           var user = await userResponse.json();
@@ -37,8 +37,8 @@ function App() {
         }
 
         // get bot token
-        // const directLineToken = process.env.REACT_APP_DIRECT_LINE_TOKEN; 
-        const directLineToken = "3wJDd4tF6q4.KNCovmaK9riWdvWBOFZRZPja_QfkX74dv8p-PFMz8lc"; // DEBUG
+        const directLineToken = process.env.REACT_APP_DIRECT_LINE_TOKEN; 
+        //const directLineToken = "3wJDd4tF6q4.KNCovmaK9riWdvWBOFZRZPja_QfkX74dv8p-PFMz8lc"; // DEBUG
         
         const res = await fetch('https://directline.botframework.com/v3/directline/tokens/generate', {
           method: 'POST',

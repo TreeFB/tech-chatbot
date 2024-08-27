@@ -1,5 +1,5 @@
 import {hooks} from 'botframework-webchat';
-import React, { useCallback } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 
 // src/components/HistoryContainer.js
 import './HistoryContainer.css'; 
@@ -10,6 +10,9 @@ const { useSendPostBack } = hooks;
     // Components to send a PostBack
     // List
     const ListPostBackButton = ({ sendPostBack, dlt }) => {
+
+        const [listLoaded, setListLoaded] = useState(0);
+
         const handlePostBackButtonClick = useCallback(() => {
           // Event to list the blobs
           dlt.postActivity({
@@ -21,13 +24,25 @@ const { useSendPostBack } = hooks;
             error => console.error(`dlt: Error sending event: ${error}`)
           );
         }, [dlt, sendPostBack]);
-      
+
+        useEffect(() => {
+          //preload the history - I can only get it to work in the active run loop call from DL, rather than startup
+          if (listLoaded<2) {
+            setListLoaded(listLoaded+1);
+          }
+          else if (listLoaded == 2) {
+            setListLoaded(listLoaded+1);
+            handlePostBackButtonClick();
+          }
+        });
+
         // HTML response for button
         return (
           <button className="app__postback-button" onClick={handlePostBackButtonClick} type="button">
-            Load Saved Conversations
+            Reload Conversations
           </button>
         );
+
       };
 
     // Define prop types
@@ -36,8 +51,6 @@ const { useSendPostBack } = hooks;
       dlt: PropTypes.any.isRequired,
       postBackValue: PropTypes.string.isRequired,
     };
-
-
 
     // Delete all
     const DeletePostBackButton = ({ sendPostBack, dlt }) => {
@@ -90,9 +103,6 @@ const { useSendPostBack } = hooks;
         // HTML div response for container content
         return (
             <div id="history_container">
-                <div id="history_buttons">
-                <ListPostBackButton sendPostBack={sendPostBack} dlt={dlt}/>
-                </div>
                 <h3>Previous Conversations [<span id="prevConversationsLength">0</span>]:</h3>
                 <div id="history_list_container">
                     <div id="history_list">
@@ -111,7 +121,9 @@ const { useSendPostBack } = hooks;
                     <div id="last30days_list" className="category-list">
                     </div>
                 </div>
-                <DeletePostBackButton sendPostBack={sendPostBack} dlt={dlt} />
+                <div id="history_buttons">
+                <ListPostBackButton sendPostBack={sendPostBack} dlt={dlt}/>
+                </div>
             </div>
         );
     };

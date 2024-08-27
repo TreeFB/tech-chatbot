@@ -36,11 +36,14 @@ const WebChatContainer = ({ dlt }) => {
 
       // Loop through messages from blob to display in webchat
       data.forEach((item) => {  
+        var hideItem = item.content.startsWith('Here is a VTT')||item.content.startsWith('Here is a project discussion in VTT')
+          ||item.content.startsWith('You are an AI assistant')||item.content.startsWith('**Project Title**: Fusion Safety System')
+          ||item.content.startsWith('**Project Title**: Deployment of Adobe AEP');
         storeRef.current.dispatch({
           type: 'DIRECT_LINE/OUTGOING_ACTIVITY',
           payload: {
             activity: {
-              type: 'message',
+              type: hideItem ? 'postBack' : 'message',
               from: { role: item.role === 'user' ? 'user' : 'bot' },
               text: item.content,
               value: {CustomProperty: "gptMessage"},

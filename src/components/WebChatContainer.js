@@ -279,7 +279,7 @@ const WebChatContainer = ({ dlt }) => {
             setSelectedOrganisations={setSelectedOrganisations}
             includeMeetingTime={includeMeetingTime}
             >
-            {next(...setupArgs)(...renderArgs)}
+            {next(...setupArgs)(includeMeetingTime,...renderArgs)}
             </MeetingUploadForm>
         );
 

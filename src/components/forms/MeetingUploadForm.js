@@ -52,7 +52,7 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
   // Call search API and load
   const loadOrganisationOptions = async (searchString) => {
     if (searchString.length > 2) {
-        const response = await fetch(`https://fb-dev-func-connect-api.azurewebsites.net/api/capsule/organisations/search?code=axXgpY8dbT_gi0JUZYMXs4sKrvf3QKLXTxwaYqTgZfBqAzFuxTFvwQ%3D%3D&search=${searchString}`);
+        const response = await fetch(`https://fb-dev-func-connect-api.azurewebsites.net/api/capsule/organisations/search?code=axXgpY8dbT_gi0JUZYMXs4sKrvf3QKLXTxwaYqTgZfBqAzFuxTFvwQ%3D%3D&search=${searchString}`, { mode: 'no-cors'});
         if (response.ok) {
             return await response.json();
         }
@@ -62,7 +62,7 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
 
   const loadClaimOptions = async (org) => {
     if (org.id != 0) {
-      const response = await fetch(`https://fb-dev-func-connect-api.azurewebsites.net/api/capsule/organisations/${org.id}/projects?code=1hDoeI1ma0oNcBzCXofq88Q3N90GWQcw0SUixCQRwriMAzFuhk2vhw%3D%3D`);
+      const response = await fetch(`https://fb-dev-func-connect-api.azurewebsites.net/api/capsule/organisations/${org.id}/projects?code=1hDoeI1ma0oNcBzCXofq88Q3N90GWQcw0SUixCQRwriMAzFuhk2vhw%3D%3D`, { mode: 'no-cors'});
         if (response.ok) {
             var claims = await response.json();
             return claims;

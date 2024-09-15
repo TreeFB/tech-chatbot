@@ -307,7 +307,7 @@ const WebChatContainer = ({ dlt }) => {
           const sendPostBack = useSendPostBack();
           setTimeout(() => {
             sendPostBack("a");
-          }, 2000);
+          }, 300);
 
         }        
 

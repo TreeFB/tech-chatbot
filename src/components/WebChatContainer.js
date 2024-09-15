@@ -279,7 +279,7 @@ const WebChatContainer = ({ dlt }) => {
             setSelectedOrganisations={setSelectedOrganisations}
             includeMeetingTime={includeMeetingTime}
             >
-            {next(...setupArgs)(includeMeetingTime,...renderArgs)}
+            {next(...setupArgs)(includeMeetingTime, ...renderArgs)}
             </MeetingUploadForm>
         );
 
@@ -288,7 +288,6 @@ const WebChatContainer = ({ dlt }) => {
         if (card.activity.attachments?.length > 0 && card.activity.attachments[0].contentType=="application/vnd.microsoft.card.adaptive") {
           //contentType = application/vnd.microsoft.card.adaptive
           //type = AdaptiveCard
-          console.log(card.activity.attachments[0].type);
           if (card.activity.attachments[0].content.body[0].text=="Please enter the client details:") {
             return RenderMeetingUploadForm(false);
           }

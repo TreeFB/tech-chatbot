@@ -261,9 +261,9 @@ const WebChatContainer = ({ dlt }) => {
         const customValue = card.activity.value?.CustomProperty;
       
         // Example condition: Apply decorator if CustomProperty equals 'gptMessage'
-        const shouldDecorate = card.activity.from.role === 'bot' && customValue === 'gptMessage';
+        const shouldDecorate = false && card.activity.from.role === 'bot' && customValue === 'gptMessage';
 
-        /*const RenderDecorator = (...renderArgs) => (
+        const RenderDecorator = (...renderArgs) => (
           <BotActivityDecorator
             key={card.activity.id}
             activityID={card.activity}
@@ -271,7 +271,7 @@ const WebChatContainer = ({ dlt }) => {
           >
             {next(...setupArgs)(...renderArgs)}
           </BotActivityDecorator>
-        );*/
+        );
 
         const RenderMeetingUploadForm = (includeMeetingTime, ...renderArgs) => (
           <MeetingUploadForm dlt={dlt}
@@ -313,9 +313,9 @@ const WebChatContainer = ({ dlt }) => {
         // Confirm outcome
         if (card.activity.type === 'messageReaction') {
           return false;
-        } /*else if (shouldDecorate) {
+        } else if (shouldDecorate) {
           return RenderDecorator;
-        }*/
+        }
         return next(...setupArgs);
       };
       

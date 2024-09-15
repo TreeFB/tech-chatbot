@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useCallback } from 'react';
+import React, { useEffect, useRef, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
+
 import './WebChatContainer.css';
 import 'botframework-webchat';
 import {hooks} from 'botframework-webchat';
+import MeetingUploadForm from './forms/MeetingUploadForm.js';
 
 
 const { useSendPostBack } = hooks;
@@ -10,6 +12,7 @@ const { useSendPostBack } = hooks;
 
 const WebChatContainer = ({ dlt }) => {
   const storeRef = useRef(null);
+  const [selectedOrganisations, setSelectedOrganisations] = useState([]);
 
   useEffect(() => {
     const { renderWebChat, createDirectLine, createStore } = window.WebChat;
@@ -54,8 +57,6 @@ const WebChatContainer = ({ dlt }) => {
       });
 
     };
-    
-
 
     // Function to populate history list
     const populateHistoryList = (data) => {
@@ -251,7 +252,7 @@ const WebChatContainer = ({ dlt }) => {
         );
       };
       
-
+      var started = false;
       // Middleware to apply decorator and pass activity content
       const activityMiddleware = () => next => (...setupArgs) => {
         const [card] = setupArgs;
@@ -261,9 +262,8 @@ const WebChatContainer = ({ dlt }) => {
       
         // Example condition: Apply decorator if CustomProperty equals 'gptMessage'
         const shouldDecorate = card.activity.from.role === 'bot' && customValue === 'gptMessage';
-        
-        // Decorator render
-        const RenderComponent = (...renderArgs) => (
+
+        const RenderDecorator = (...renderArgs) => (
           <BotActivityDecorator
             key={card.activity.id}
             activityID={card.activity}
@@ -273,11 +273,49 @@ const WebChatContainer = ({ dlt }) => {
           </BotActivityDecorator>
         );
 
+        const RenderMeetingUploadForm = (includeMeetingTime, ...renderArgs) => (
+          <MeetingUploadForm dlt={dlt}
+            selectedOrganisations={selectedOrganisations}
+            setSelectedOrganisations={setSelectedOrganisations}
+            includeMeetingTime={includeMeetingTime}
+            >
+            {next(...setupArgs)(...renderArgs)}
+            </MeetingUploadForm>
+        );
+
+        //FORM REPLACER
+        //This is intercepting the forms and replacing them with a custom react form that handles everything better
+        if (card.activity.attachments?.length > 0 && card.activity.attachments[0].contentType=="application/vnd.microsoft.card.adaptive") {
+          //contentType = application/vnd.microsoft.card.adaptive
+          //type = AdaptiveCard
+          console.log(card.activity.attachments[0].type);
+          if (card.activity.attachments[0].content.body[0].text=="Please enter the client details:") {
+            return RenderMeetingUploadForm(false);
+          }
+          else if (card.activity.attachments[0].content.body[0].text=="Please enter the client meeting details:") {
+            return RenderMeetingUploadForm(true);
+          }
+        }
+
+        if (card.activity.type!="event" && card.activity.value && card.activity.value.msteams.type=="messageBack") {
+          //value = msteams.type:messageBack
+          console.log(card.activity.value);
+        }
+
+        if (!started && card.activity.type=="message" && card.activity.text && card.activity.text.startsWith("Welcome to the FB TechBot")) {
+          started = true;
+          const sendPostBack = useSendPostBack();
+          setTimeout(() => {
+            sendPostBack("a");
+          }, 2000);
+
+        }        
+
         // Confirm outcome
         if (card.activity.type === 'messageReaction') {
           return false;
         } else if (shouldDecorate) {
-          return RenderComponent;
+          return RenderDecorator;
         }
         return next(...setupArgs);
       };
@@ -307,6 +345,13 @@ const WebChatContainer = ({ dlt }) => {
         const textarea = document.querySelector('.webchat__auto-resize-textarea__textarea');
         if (textarea) {
           textarea.setAttribute('rows', '4');
+        }
+
+        //inject the dropdown lists for Cpasule Organisations and active claim periods
+        const clientnameTextbox = document.querySelector('input[aria-label="Enter client name"]');
+        if (clientnameTextbox) {
+          //TODO
+          console.log(clientnameTextbox)
         }
 
       } else {

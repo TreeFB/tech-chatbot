@@ -296,7 +296,7 @@ const WebChatContainer = ({ dlt }) => {
           }
         }
 
-        if (card.activity.type!="event" && card.activity.value && card.activity.value.msteams.type=="messageBack") {
+        if (card.activity.type!="event" && card.activity.value?.msteams?.type=="messageBack") {
           //value = msteams.type:messageBack
           console.log(card.activity.value);
         }

@@ -41,11 +41,11 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
   useEffect(() => {
     if (organisationQuery) {
       //Do nothing yet
-      console.log("OrganisationSearch: "+organisationQuery);
+      //console.log("OrganisationSearch: "+organisationQuery);
     }
     if (claimQuery) {
       //Do nothing yet
-      console.log("ClaimSearch: "+claimQuery);
+      //console.log("ClaimSearch: "+claimQuery);
     }
   }, [organisationQuery,claimQuery]);
 

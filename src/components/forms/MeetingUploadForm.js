@@ -24,7 +24,7 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
   const writerTypeOptions = [
     {id:'AGI Writers',name:'AGI Writers'},
     {id:'FB Researchers',name:'FB Researchers'},
-    {id:'DB Any',name:'FB Any'},
+    {id:'FB Any',name:'FB Any'},
     {id:'Not Ready',name:'Not Ready'},
   ];
   const techSectorOptions = [

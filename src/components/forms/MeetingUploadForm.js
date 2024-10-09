@@ -13,6 +13,7 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
   const [writerTeam, setWriterTeam] = useState("");
   const [techSector, setTechSector] = useState("");
   const [meetingTime, setMeetingTime] = useState("");
+  const [writingDueDate, setWritingDueDate] = useState("");
 
   const [organisationQuery, setOrganisationQuery] = useState("");
   const [claimQuery, setClaimQuery] = useState("");
@@ -22,6 +23,7 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
   const projectSelectRef = useRef();
 
   const writerTypeOptions = [
+    {id:'Me',name:'Me'},
     {id:'AGI Writers',name:'AGI Writers'},
     {id:'FB Researchers',name:'FB Researchers'},
     {id:'FB Any',name:'FB Any'},
@@ -94,11 +96,11 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
         "clientName":"${organisation.name}","claimYears":"${projectList}",
         "capsuleOrganisationId":"${organisation.id}","capsuleOpportunityIds":"${opportunityIdList}",
         "clientMeetingDate":"${meetingTimeParts[0]}","clientMeetingTime":"${meetingTimeParts[1]}",
-        "claimWriterTeam":"${writerTeam.id}","claimTechSector":"${techSector.id}"}`;
+        "claimWriterTeam":"${writerTeam.id}","claimTechSector":"${techSector.id}","writingDueDate":"${writingDueDate}"}`;
       sendMessage(formMessage);
       setFormSubmitted(true);
     };
-    return  <button className="button_icon submit" onClick={handleClick} disabled={formSubmitted||organisation.id==0||projects.length==0||writerTeam==""||techSector==""||(includeMeetingTime&&meetingTime=="")}>
+    return  <button className="button_icon submit" onClick={handleClick} disabled={formSubmitted||organisation.id==0||projects.length==0||writerTeam==""||techSector==""||writingDueDate==""||(includeMeetingTime&&meetingTime=="")}>
                 <span className="material-symbols-outlined">{icon}</span>{title}
             </button>;
   };  
@@ -172,6 +174,11 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
           onChange={(value) => setTechSector(value)}
         />  
       </div>
+      <div className='horizontal'>
+        <h3 className='select-inline-label'>Due By</h3>
+        <input type="date" disabled={formSubmitted} onChange={(value) => setWritingDueDate(value.target.value)}/>  
+        <span className='select-help-text' >(Default is 5 work days from now)</span>
+      </div>      
       <div >
           <BotMessageButton title="Submit" icon="save"/>
       </div>

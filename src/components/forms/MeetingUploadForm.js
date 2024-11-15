@@ -26,7 +26,7 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
     {id:'Me',name:'Me'},
     {id:'AGI Writers',name:'AGI Writers'},
     {id:'FB Researchers',name:'FB Researchers'},
-    {id:'FB Any',name:'FB Any'},
+    //{id:'FB Any',name:'FB Any'},
     {id:'Not Ready',name:'Not Ready'},
   ];
   const techSectorOptions = [
@@ -177,7 +177,7 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
       <div className='horizontal'>
         <h3 className='select-inline-label'>Due By</h3>
         <input type="date" disabled={formSubmitted} onChange={(value) => setWritingDueDate(value.target.value)}/>  
-        <span className='select-help-text' >(Default is 5 work days from now)</span>
+        <span className='select-help-text' >(Typically a week from now)</span>
       </div>      
       <div >
           <BotMessageButton title="Submit" icon="save"/>

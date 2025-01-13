@@ -26,7 +26,7 @@ const WebChatContainer = ({ dlt }) => {
       if (!storeRef.current) return; 
 
       // Send message to webchat
-      storeRef.current.dispatch({
+      /*storeRef.current.dispatch({
         type: 'DIRECT_LINE/OUTGOING_ACTIVITY',
         payload: {
           activity: {
@@ -35,7 +35,7 @@ const WebChatContainer = ({ dlt }) => {
             text: "**Reloading conversation, please wait...**",
           },
         },
-      });
+      });*/
 
       // Loop through messages from blob to display in webchat
       data.forEach((item) => {  

@@ -103,7 +103,7 @@ const NumbersUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
         "clientName":"${organisation.name}","claimYears":"${projectList}",
         "capsuleOrganisationId":"${organisation.id}","capsuleOpportunityIds":"${opportunityIdList}",
         "taskActivity":"${activityList}","taskDescription":"${description}",
-        "claimWriterTeam":"${writerTeam.id}","claimScheme":"${claimScheme.id}","writingDueDate":"${writingDueDate}"}`;
+        "claimWriterTeam":"${writerTeam.id}","claimScheme":"${claimScheme}","writingDueDate":"${writingDueDate}"}`;
       sendMessage(formMessage);
       setFormSubmitted(true);
     };
@@ -190,7 +190,7 @@ const NumbersUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
       </div>
       <div className='horizontal'>
         <h3 className='select-inline-label'>Information</h3>
-        <textarea rows="3" disabled={formSubmitted} onChange={(value) => setDescription(value)}/>  
+        <textarea rows="3" disabled={formSubmitted} onChange={(value) => setDescription(valuetarget.value)}/>  
       </div>          
       <div className='horizontal'>
         <h3 className='select-inline-label'>Due By</h3>

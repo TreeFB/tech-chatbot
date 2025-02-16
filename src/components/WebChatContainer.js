@@ -5,6 +5,7 @@ import './WebChatContainer.css';
 import 'botframework-webchat';
 import {hooks} from 'botframework-webchat';
 import MeetingUploadForm from './forms/MeetingUploadForm.js';
+import NumbersUploadForm from './forms/NumbersUploadForm.js';
 
 
 const { useSendPostBack } = hooks;
@@ -280,8 +281,17 @@ const WebChatContainer = ({ dlt }) => {
             includeMeetingTime={includeMeetingTime}
             >
             {next(...setupArgs)(includeMeetingTime, ...renderArgs)}
-            </MeetingUploadForm>
+          </MeetingUploadForm>
         );
+
+        const RenderNumbersUploadForm = (...renderArgs) => (
+          <NumbersUploadForm dlt={dlt}
+            selectedOrganisations={selectedOrganisations}
+            setSelectedOrganisations={setSelectedOrganisations}
+            >
+            {next(...setupArgs)(...renderArgs)}
+          </NumbersUploadForm>
+        );      
 
         //FORM REPLACER
         //This is intercepting the forms and replacing them with a custom react form that handles everything better
@@ -294,7 +304,9 @@ const WebChatContainer = ({ dlt }) => {
           else if (card.activity.attachments[0].content.body[0].text=="Please enter the client meeting details:") {
             return RenderMeetingUploadForm(true);
           }
-        }
+          else if (card.activity.attachments[0].content.body[0].text=="Enter details for a new numbers task:") {
+            return RenderNumbersUploadForm(true);
+          }        }
 
         if (card.activity.type!="event" && card.activity.value?.msteams?.type=="messageBack") {
           //value = msteams.type:messageBack

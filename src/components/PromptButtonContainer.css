@@ -70,6 +70,13 @@ select:hover{
   background-color: #66ca02;
 }
 
+.horizontal > textarea {
+  width: 100%;
+  min-height: 40px;
+  max-height: 100px;
+  resize: vertical;
+}
+
 #action_buttons  {
   display: flex;
 }

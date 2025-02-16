@@ -103,7 +103,7 @@ const NumbersUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
         "clientName":"${organisation.name}","claimYears":"${projectList}",
         "capsuleOrganisationId":"${organisation.id}","capsuleOpportunityIds":"${opportunityIdList}",
         "taskActivity":"${activityList}","taskDescription":"${description}",
-        "claimWriterTeam":"${writerTeam.id}","claimScheme":"${claimScheme}","writingDueDate":"${writingDueDate}"}`;
+        "requestedTeam":"${writerTeam.id}","claimScheme":"${claimScheme.id}","writingDueDate":"${writingDueDate}"}`;
       sendMessage(formMessage);
       setFormSubmitted(true);
     };

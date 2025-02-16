@@ -190,7 +190,7 @@ const NumbersUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
       </div>
       <div className='horizontal'>
         <h3 className='select-inline-label'>Information</h3>
-        <textarea rows="3" disabled={formSubmitted} onChange={(value) => setDescription(valuetarget.value)}/>  
+        <textarea rows="3" disabled={formSubmitted} onChange={(value) => setDescription(value.target.value)}/>  
       </div>          
       <div className='horizontal'>
         <h3 className='select-inline-label'>Due By</h3>

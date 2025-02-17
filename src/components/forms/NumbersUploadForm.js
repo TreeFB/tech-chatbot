@@ -34,8 +34,8 @@ const NumbersUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
     {id:'RDEC',name:'RDEC'},
     {id:'Hybrid',name:'Hybrid'},
   ];
-
   const activityOptions = [
+    {id:'Numbers Prep',name:'Numbers Prep'},
     {id:'Accounts',name:'Accounts'},
     {id:'Payroll',name:'Payroll'},
     {id:'Timesheets',name:'Timesheets'},

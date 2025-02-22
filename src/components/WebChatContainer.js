@@ -313,7 +313,7 @@ const WebChatContainer = ({ dlt }) => {
           console.log(card.activity.value);
         }
 
-        if (!started && card.activity.type=="message" && card.activity.text && card.activity.text.startsWith("Welcome to the FB TechBot")) {
+        if (!started && card.activity.type=="message" && card.activity.text && card.activity.text.startsWith("Welcome to the FB TaskBot")) {
           started = true;
           const sendPostBack = useSendPostBack();
           setTimeout(() => {

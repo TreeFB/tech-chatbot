@@ -40,7 +40,7 @@
     },
     "forwardingGateway": {
         "allowedForwardedHosts": [
-            "techbot.forrestbrown.co.uk"
+            "taskbot.forrestbrown.co.uk"
         ]
     }
 }

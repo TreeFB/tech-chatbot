@@ -318,7 +318,9 @@ const WebChatContainer = ({ dlt }) => {
             return RenderNumbersUploadForm(true);
           }        
           else if (card.activity.attachments[0].content.body[0].text=="Enter details for a new TaxCalc task:") {
-          }          }s
+            return RenderTaxCalcUploadForm(true);
+          }          
+        }
 
         if (card.activity.type!="event" && card.activity.value?.msteams?.type=="messageBack") {
           //value = msteams.type:messageBack

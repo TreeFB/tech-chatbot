@@ -33,6 +33,7 @@ const TaxCalcUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
     {id:'SME',name:'SME'},
     {id:'RDEC',name:'RDEC'},
     {id:'Hybrid',name:'Hybrid'},
+    {id:'Merged Scheme',name:'Merged Scheme'},    
   ];
   const activityOptions = [
     {id:'TaxCalc (Complete)',name:'TaxCalc (Complete)'},

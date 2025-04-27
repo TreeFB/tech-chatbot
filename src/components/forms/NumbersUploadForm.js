@@ -33,6 +33,7 @@ const NumbersUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
     {id:'SME',name:'SME'},
     {id:'RDEC',name:'RDEC'},
     {id:'Hybrid',name:'Hybrid'},
+    {id:'Merged Scheme',name:'Merged Scheme'},
   ];
   const activityOptions = [
     {id:'Numbers Prep',name:'Numbers Prep'},

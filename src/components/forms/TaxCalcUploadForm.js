@@ -11,7 +11,6 @@ const TaxCalcUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
   const [organisation, setOrganisation] = useState({id:0});
   const [projects, setProjects] = useState([]);
   const [writerTeam, setWriterTeam] = useState("");
-  const [claimScheme, setClaimScheme] = useState("");
   const [activities, setActivities] = useState("");
   const [description, setDescription] = useState("");
   const [writingDueDate, setWritingDueDate] = useState("");
@@ -29,15 +28,9 @@ const TaxCalcUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
     {id:'FB Tax Advisors',name:'FB Tax Advisors'},
     {id:'Not Ready',name:'Not Ready'},
   ];
-  const claimSchemeOptions = [
-    {id:'SME',name:'SME'},
-    {id:'RDEC',name:'RDEC'},
-    {id:'Hybrid',name:'Hybrid'},
-    {id:'Merged Scheme',name:'Merged Scheme'},    
-  ];
   const activityOptions = [
-    {id:'TaxCalc (Complete)',name:'TaxCalc (Complete)'},
-    {id:'TaxCalc (Partial)',name:'TaxCalc (Partial)'},
+    {id:'TaxCalc (Pre R&D)',name:'TaxCalc (Pre R&D)'},
+    {id:'TaxCalc (Post R&D)',name:'TaxCalc (Post R&D)'},
   ];
 
   useEffect(() => {
@@ -102,11 +95,11 @@ const TaxCalcUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
         "clientName":"${organisation.name}","claimYears":"${projectList}",
         "capsuleOrganisationId":"${organisation.id}","capsuleOpportunityIds":"${opportunityIdList}",
         "taskActivity":"${activityList}","taskDescription":"${description}",
-        "requestedTeam":"${writerTeam.id}","claimScheme":"${claimScheme.id}","writingDueDate":"${writingDueDate}"}`;
+        "requestedTeam":"${writerTeam.id}","writingDueDate":"${writingDueDate}"}`;
       sendMessage(formMessage);
       setFormSubmitted(true);
     };
-    return  <button className="button_icon submit" onClick={handleClick} disabled={formSubmitted||organisation.id==0||projects.length==0||writerTeam==""||claimScheme==""||writingDueDate==""||activities==""}>
+    return  <button className="button_icon submit" onClick={handleClick} disabled={formSubmitted||organisation.id==0||projects.length==0||writerTeam==""||writingDueDate==""||activities==""}>
                 <span className="material-symbols-outlined">{icon}</span>{title}
             </button>;
   };  
@@ -150,18 +143,6 @@ const TaxCalcUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
         />
       </div>
       <div className='horizontal'>
-        <h3 className='select-inline-label'>Claim Scheme</h3>
-        <Select
-          className='select-inline'
-          placeholder="Choose claim schema"
-          isDisabled={formSubmitted}
-          getOptionLabel={(e) => e.name}
-          getOptionValue={(e) => e.id}
-          options={claimSchemeOptions}
-          onChange={(value) => setClaimScheme(value)}
-        />      
-      </div>
-      <div className='horizontal'>
         <h3 className='select-inline-label'>Writer Team</h3>
         <Select
           className='select-inline'
@@ -194,7 +175,7 @@ const TaxCalcUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
       <div className='horizontal'>
         <h3 className='select-inline-label'>Due By</h3>
         <input type="date" disabled={formSubmitted} onChange={(value) => setWritingDueDate(value.target.value)}/>  
-        <span className='select-help-text' >(Typically a week from now)</span>
+        <span className='select-help-text' >(Typically a day from now)</span>
       </div>      
       <div >
           <BotMessageButton title="Submit" icon="save"/>

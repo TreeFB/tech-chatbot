@@ -108,7 +108,7 @@ const TaxCalcUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
       var activityList = activities.map((p) => p.id).join(",");
       var formMessage = `{"submit":true,
         "clientName":"${organisation.name}","claimYears":"${projectList}",
-        "capsuleOrganisationId":"${organisation.id}","capsuleOpportunityIds":"${opportunityIdList}","requestingTeam":"${requestingTeam}", 
+        "capsuleOrganisationId":"${organisation.id}","capsuleOpportunityIds":"${opportunityIdList}","requestingTeam":"${requestingTeam.id}", 
         "taskActivity":"${activityList}","taskDescription":"${description}",
         "requestedTeam":"${writerTeam.id}","writingDueDate":"${writingDueDate}"}`;
       sendMessage(formMessage);

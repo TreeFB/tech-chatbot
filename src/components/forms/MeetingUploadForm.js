@@ -109,7 +109,7 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
       var meetingTimeParts = meetingTime.split("T");
       var formMessage = `{"submit":true,
         "clientName":"${organisation.name}","claimYears":"${projectList}",
-        "capsuleOrganisationId":"${organisation.id}","capsuleOpportunityIds":"${opportunityIdList}","requestingTeam":"${requestingTeam}", 
+        "capsuleOrganisationId":"${organisation.id}","capsuleOpportunityIds":"${opportunityIdList}","requestingTeam":"${requestingTeam.id}", 
         "clientMeetingDate":"${meetingTimeParts[0]}","clientMeetingTime":"${meetingTimeParts[1]}",
         "claimWriterTeam":"${writerTeam.id}","claimTechSector":"${techSector.id}","writingDueDate":"${writingDueDate}"}`;
       sendMessage(formMessage);

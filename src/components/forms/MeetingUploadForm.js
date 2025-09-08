@@ -1,6 +1,6 @@
 import '../../App.css';
 import '../WebChatContainer.css';
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import AsyncSelect from "react-select/async";
 import PropTypes from 'prop-types';
@@ -10,6 +10,7 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
 
   const [organisation, setOrganisation] = useState({id:0});
   const [projects, setProjects] = useState([]);
+  const [requestingTeam, setRequestingTeam] = useState("");
   const [writerTeam, setWriterTeam] = useState("");
   const [techSector, setTechSector] = useState("");
   const [meetingTime, setMeetingTime] = useState("");
@@ -19,8 +20,6 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
   const [claimQuery, setClaimQuery] = useState("");
   const [claimOptions, setClaimOptions] = useState([]);
   const [formSubmitted, setFormSubmitted] = useState(false);
-
-  const projectSelectRef = useRef();
 
   const writerTypeOptions = [
     {id:'Me',name:'Me'},
@@ -32,6 +31,13 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
   const techSectorOptions = [
     {id:'Analogue',name:'Analogue (engineering, manufacturing,..)'},
     {id:'Digital',name:'Digital (software, IT, electronics,...)'},
+  ];
+  const requestingTeamOptions = [
+    {id:'FBC',name:'FBC'},
+    {id:'Hawthorn',name:'Hawthorn'},
+    {id:'Maple',name:'Maple'},
+    {id:'Redwood',name:'Redwood'},
+    {id:'Sherwood',name:'Sherwood'},
   ];
 
   useEffect(() => {
@@ -80,6 +86,15 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
     
     var projectOptions = await loadClaimOptions(org);
     setClaimOptions(projectOptions);
+    if (projectOptions.length == 1) {
+      setProjects([projectOptions[0]]);
+      if (projectOptions[0].team) {
+        const teamObj = requestingTeamOptions.find(t => t.name === projectOptions[0].team);
+        setRequestingTeam(teamObj || "");              
+      } else {
+        setRequestingTeam("");  
+      }      
+    }
     return setSelectedOrganisations(org);
   };  
 
@@ -94,13 +109,13 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
       var meetingTimeParts = meetingTime.split("T");
       var formMessage = `{"submit":true,
         "clientName":"${organisation.name}","claimYears":"${projectList}",
-        "capsuleOrganisationId":"${organisation.id}","capsuleOpportunityIds":"${opportunityIdList}",
+        "capsuleOrganisationId":"${organisation.id}","capsuleOpportunityIds":"${opportunityIdList}","requestingTeam":"${requestingTeam}", 
         "clientMeetingDate":"${meetingTimeParts[0]}","clientMeetingTime":"${meetingTimeParts[1]}",
         "claimWriterTeam":"${writerTeam.id}","claimTechSector":"${techSector.id}","writingDueDate":"${writingDueDate}"}`;
       sendMessage(formMessage);
       setFormSubmitted(true);
     };
-    return  <button className="button_icon submit" onClick={handleClick} disabled={formSubmitted||organisation.id==0||projects.length==0||writerTeam==""||techSector==""||writingDueDate==""||(includeMeetingTime&&meetingTime=="")}>
+    return  <button className="button_icon submit" onClick={handleClick} disabled={formSubmitted||organisation.id==0||projects.length==0||requestingTeam==""||writerTeam==""||techSector==""||writingDueDate==""||(includeMeetingTime&&meetingTime=="")}>
                 <span className="material-symbols-outlined">{icon}</span>{title}
             </button>;
   };  
@@ -124,7 +139,11 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
           isDisabled={formSubmitted}
           loadOptions={loadOrganisationOptions}
           onInputChange={(value) => {setOrganisationQuery(value)}}
-          onChange={(value) => {setSelectedOrganisation(value); projectSelectRef.current.clearValue();}}
+          onChange={(value) => {
+            setSelectedOrganisation(value); 
+            setProjects([]);
+            setRequestingTeam("");  
+          }}
         />
       </div>
 
@@ -132,17 +151,38 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
         <h3 className='select-inline-label'>Projects</h3>
         <Select
           isMulti
-          ref={projectSelectRef}
           className='select-inline'
           getOptionLabel={(e) => e.name}
           getOptionValue={(e) => e.id}
           isDisabled={formSubmitted}
           placeholder="Enter claim period"
           options={claimOptions}
+          value={projects}
           onInputChange={(value) => setClaimQuery(value) }
-          onChange={(value) => setProjects(value)}
+          onChange={(value) => { 
+            setProjects(value);
+            if (value.length > 0 && value[0].team) {
+              const teamObj = requestingTeamOptions.find(t => t.name === value[0].team);
+              setRequestingTeam(teamObj || "");              
+            } else {
+              setRequestingTeam("");  
+            }
+          }}
         />
       </div>
+      <div className='horizontal'>
+        <h3 className='select-inline-label'>Requesting Team</h3>
+        <Select
+          className='select-inline'
+          placeholder="Choose requesting team"
+          isDisabled={formSubmitted}
+          getOptionLabel={(e) => e.name}
+          getOptionValue={(e) => e.id}
+          options={requestingTeamOptions}
+          value={requestingTeam}
+          onChange={(value) => setRequestingTeam(value)}
+        />      
+      </div>      
       { includeMeetingTime &&
       <div className='horizontal'>
         <h3 className='select-inline-label'>Meeting Time</h3>

@@ -33,7 +33,8 @@ const MeetingUploadForm = ({ selectedOrganisations, setSelectedOrganisations, in
     {id:'Digital',name:'Digital (software, IT, electronics,...)'},
   ];
   const requestingTeamOptions = [
-    {id:'FBC',name:'FBC'},
+    {id:'FB Consulting',name:'FB Consulting'},
+    {id:'Hatfield',name:'Hatfield'},
     {id:'Hawthorn',name:'Hawthorn'},
     {id:'Maple',name:'Maple'},
     {id:'Redwood',name:'Redwood'},

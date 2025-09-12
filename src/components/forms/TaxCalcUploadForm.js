@@ -28,7 +28,8 @@ const TaxCalcUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
     {id:'Not Ready',name:'Not Ready'},
   ];
   const requestingTeamOptions = [
-    {id:'FBC',name:'FBC'},
+    {id:'FB Consulting',name:'FB Consulting'},
+    {id:'Hatfield',name:'Hatfield'},
     {id:'Hawthorn',name:'Hawthorn'},
     {id:'Maple',name:'Maple'},
     {id:'Redwood',name:'Redwood'},

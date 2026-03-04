@@ -8,6 +8,19 @@ import {hooks} from 'botframework-webchat';
 
 const NumbersUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) => {
 
+  // normalise API response casing
+  const normalizeApiObject = (item) => {
+    if (!item) return item;
+    const result = { ...item };
+    if (item.Id !== undefined && result.id === undefined) result.id = item.Id;
+    if (item.Name !== undefined && result.name === undefined) result.name = item.Name;
+    if (item.Team !== undefined && result.team === undefined) result.team = item.Team;
+    if (item.Status !== undefined && result.status === undefined) result.status = item.Status;
+    if (item.Owner !== undefined && result.owner === undefined) result.owner = item.Owner;
+    return result;
+  };
+  const normalizeArray = (arr) => (Array.isArray(arr) ? arr.map(normalizeApiObject) : []);
+
   const [organisation, setOrganisation] = useState({id:0});
   const [projects, setProjects] = useState([]);
   const [requestingTeam, setRequestingTeam] = useState("");
@@ -71,7 +84,8 @@ const NumbersUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
     if (searchString.length > 2) {
         const response = await fetch(`https://fb-dev-func-connect-api.azurewebsites.net/api/capsule/organisations/search?code=axXgpY8dbT_gi0JUZYMXs4sKrvf3QKLXTxwaYqTgZfBqAzFuxTFvwQ%3D%3D&search=${searchString}`);
         if (response.ok) {
-            return await response.json();
+            const data = await response.json();
+            return normalizeArray(data);
         }
     }
     return [];
@@ -82,7 +96,7 @@ const NumbersUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
       const response = await fetch(`https://fb-dev-func-connect-api.azurewebsites.net/api/capsule/organisations/${org.id}/projects?code=1hDoeI1ma0oNcBzCXofq88Q3N90GWQcw0SUixCQRwriMAzFuhk2vhw%3D%3D`);
         if (response.ok) {
             var claims = await response.json();
-            return claims;
+            return normalizeArray(claims);
         }
     }
     return [];

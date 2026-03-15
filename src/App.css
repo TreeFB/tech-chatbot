@@ -91,8 +91,8 @@ html, body {
 }
 
 .column-1 {
-  flex: 3 3 50%;
-  min-width: 400px;
+  flex: 1 1 10%;
+  min-width: 50px;
 }
 
 .columnHeader h1{
@@ -100,7 +100,7 @@ html, body {
 }
 
 .column-2 {
-  flex: 1 1 20%;
+  flex: 9 9 300px;
 }
 
 .history-sidebar {

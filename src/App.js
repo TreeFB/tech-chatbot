@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import WebChatContainer from './components/WebChatContainer';
-import PromptButtonContainer from './components/PromptButtonContainer';
+import MenuContainer from './components/MenuContainer';
 import HistoryContainer from './components/HistoryContainer';
 import './App.css';
 import 'botframework-webchat';
@@ -11,10 +11,10 @@ import {Components} from 'botframework-webchat';
 function App() {
   const [dlt, setDlt] = useState(null);
   const [webChatReady, setWebChatReady] = useState(false);
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  //const [isFullscreen, setIsFullscreen] = useState(false);
   const [viewHistory, setViewHistory] = useState(true);
 
-  const handleFullscreen = () => {setIsFullscreen(!isFullscreen);};
+  //const handleFullscreen = () => {setIsFullscreen(!isFullscreen);};
   const showHistory = () => {setViewHistory(false);};
   const hideHistory = () => {setViewHistory(true);};
 
@@ -76,21 +76,27 @@ function App() {
   // HTML content to return as App
   return (
     <div>
-    <div className={`container ${isFullscreen ? 'fullscreen' : ''}`}>
+    <div className={`container`}>
       <div className="column column-1">
         <div className="columnHeader">
+          <h1>&#9776;</h1>
+        </div>        
+        <MenuContainer dlt={dlt} />
+      </div>      
+      <div className="column column-2">
+        <div className="columnHeader">
           <h1><img src="logo192.png" width="32px" className='fb-logo'/>ForrestBrown Taskbot</h1>
-          <span className="fullscreen-button material-symbols-outlined" onClick={handleFullscreen}>fullscreen</span>
+          <span className="history-button material-symbols-outlined" onClick={showHistory} >history</span>
         </div>
         <WebChatContainer dlt={dlt} />
       </div>
-      <div className="column column-2">
+      {/*<div className="column column-2">
         <div className="columnHeader">
           <h1>Prompts</h1>
           <span className="history-button material-symbols-outlined" onClick={showHistory} >history</span>
         </div>        
         <PromptButtonContainer dlt={dlt} />
-      </div>
+      </div>*/}
     </div>
     <div className={`container sidebar-container ${viewHistory ? 'history-hidden' : 'history-visible'}`}>
       <div className={`sidebar history-sidebar column`}>

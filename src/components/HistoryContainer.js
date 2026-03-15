@@ -99,6 +99,18 @@ const { useSendPostBack } = hooks;
 
         // Make the function globally accessible
         window.handlePostBackButtonClick = handlePostBackButtonClick;
+
+        // Reload the history list when the component mounts
+        useEffect(() => {
+            dlt.postActivity({
+                type: 'event',
+                name: 'event_listBlobs',
+                value: { CustomProperty: "value" }
+            }).subscribe(
+                id => console.log(`dlt: Event sent with id: ${id}`),
+                error => console.error(`dlt: Error sending event: ${error}`)
+            );
+        }, [dlt]);
         
         // HTML div response for container content
         return (

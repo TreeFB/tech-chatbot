@@ -88,7 +88,7 @@ function App() {
           <h1><img src="logo192.png" width="32px" className='fb-logo'/>ForrestBrown Taskbot</h1>
           <span className="history-button material-symbols-outlined" onClick={showHistory} >history</span>
         </div>
-        <WebChatContainer dlt={dlt} />
+        <WebChatContainer dlt={dlt} onCloseHistory={hideHistory} />
       </div>
       {/*<div className="column column-2">
         <div className="columnHeader">

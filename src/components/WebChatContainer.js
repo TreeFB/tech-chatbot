@@ -12,7 +12,7 @@ import TaxCalcUploadForm from './forms/TaxCalcUploadForm.js';
 const { useSendPostBack } = hooks;
 
 
-const WebChatContainer = ({ dlt }) => {
+const WebChatContainer = ({ dlt, onCloseHistory }) => {
   const storeRef = useRef(null);
   const [selectedOrganisations, setSelectedOrganisations] = useState([]);
 
@@ -68,6 +68,7 @@ const WebChatContainer = ({ dlt }) => {
         function handleButtonClick(value) {
            // eslint-disable-next-line no-undef
            handlePostBackButtonClick(value);
+           if (onCloseHistory) onCloseHistory();
         }
         // Function to remove blobs
         function removeBlobEntry(value) {
@@ -396,6 +397,7 @@ const WebChatContainer = ({ dlt }) => {
 // Define propTypes
 WebChatContainer.propTypes = {
   dlt: PropTypes.object.isRequired, // Adjust the type according to what dlt should be
+  onCloseHistory: PropTypes.func,
 };
 
 export default WebChatContainer;

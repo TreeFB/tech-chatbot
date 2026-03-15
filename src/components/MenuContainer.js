@@ -91,9 +91,9 @@ const MenuContainer = ({ dlt }) => {
     
   //const [selectedOrganisations, setSelectedOrganisations] = useState([]);
   return (
-    <div id="menu_container">
       <Components.Composer directLine={dlt}>
-      <div className="prompt-section prompt-section-projectlist">
+    <div id="menu_container">
+      <div className="menu-section menu-section-tasks">
         <h3>Tasks</h3>
         <div className="horizontal">
           <GenButton title="Case Study" icon="edit_document" message="!menuitem:casestudy"/>
@@ -114,7 +114,7 @@ const MenuContainer = ({ dlt }) => {
           <GenButton title="Freebot" icon="barefoot" message="!menuitem:freebot"/>
         </div>
       </div>
-      <div className="prompt-section prompt-section-general">
+      <div className="menu-section menu-section-general">
           <div className="header-with-tooltip">
           <h3>System</h3>
         </div>
@@ -123,8 +123,8 @@ const MenuContainer = ({ dlt }) => {
             <GenButton title="Logout" icon="logout" message="!logout"/>
           </div>
       </div>
-      </Components.Composer>
     </div>
+      </Components.Composer>
     
   );
 }

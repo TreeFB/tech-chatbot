@@ -51,14 +51,14 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 100%;
-  justify-content: end;
+  justify-content: space-between;
 }
 
-#menu_container.prompt-section {
+#menu_container.menu-section {
   align-items: end;
 }
 
-#menu_container .prompt-section-hidden {
+#menu_container .menu-section-hidden {
   display:none;
 }
 

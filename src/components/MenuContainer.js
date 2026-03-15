@@ -65,13 +65,17 @@ const MenuContainer = ({ dlt }) => {
       icon: PropTypes.string.isRequired
     };
 
-    const { useSendMessage } = hooks;
+    const { useSendMessage, usePostActivity } = hooks;
     
     const GenButton = ({ title, message, icon }) => {
       const sendMessage = useSendMessage();
+      const postActivity = usePostActivity();
 
       const handleClick = () => {
-        sendMessage(message);
+        if (message.startsWith('!menuitem:')) 
+          postActivity({ type: 'event', name: 'menuitem', value: message });
+        else
+          sendMessage(message);
       };
       return <button className="button_icon" onClick={handleClick}><span className="material-symbols-outlined">{icon}</span><span  className="button_text">{title}</span></button>;
     };

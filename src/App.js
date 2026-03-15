@@ -101,15 +101,15 @@ function App() {
     <div className={`container sidebar-container ${viewHistory ? 'history-hidden' : 'history-visible'}`}>
       <div className={`sidebar history-sidebar column`}>
         <div className="columnHeader">
-          <h1>History Clipboard</h1>
-          <div className="tooltip-container">
+          <h1>Bot History</h1>
+          {/*<div className="tooltip-container">
           <span className="question-mark-icon material-symbols-outlined">question_mark</span>
             <div className="tooltip-content">
               Here is where previous conversations had with ChatGPT can be accessed to continue working on.
               <br/><br/>
               When on the main menu, please either list the conversations using the button below, select a conversation to work on, or delete a conversation from the clipboard.
             </div>
-          </div>
+          </div>*/}
           <span className="history-close-button material-symbols-outlined" onClick={hideHistory} >close</span>
         </div>          
         <div className="history-sidebar-list" style={{ textAlign: "center" }}>

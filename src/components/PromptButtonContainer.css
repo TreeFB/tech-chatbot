@@ -130,20 +130,7 @@ select:hover{
   display:none;
 }
 
-.button_icon {
-  display: flex;
-  align-items: center; /* Vertically center the icon and text */
-  justify-content: center; /* Center content horizontally */
-  padding: 10px; /* Adjust padding as needed */
-  background-color: #6ba645; /* Green background color */
-  color: white; /* White text color */
-  border: none; /* Remove default button border */
-  border-radius: 8px; /* Rounded corners */
-}
 
-.button_icon .material-symbols-outlined {
-  margin-right: 8px; /* Space between the icon and text */
-}
 
 
 .header-with-tooltip {

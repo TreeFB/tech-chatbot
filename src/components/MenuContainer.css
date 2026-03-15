@@ -8,87 +8,19 @@
   margin-bottom: 20px; /* Optional: Adjust margin between buttons */
 }
 
-button {
-  display: block;
-  width: 100%;
-  height: 36px;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: none;
-  background-color: #61a321;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-right: 3px;
-  border-radius: 5px;
-  font-family:  "Rubik", sans-serif;
-  font-weight: 500;
-  font-size: smaller;
-}
 
-button.submit {
-  max-width: 25%;
-  width: 130px;
-  margin-top: 10px;
-  float: right;
-}
-
-
-button[disabled], select[disabled] {
-  color: #999; /* Light gray text color */
-  background-color: #f2f2f2; /* Light gray background */
-  opacity: 0.6; /* Lower opacity for a faded appearance */
-  cursor: not-allowed; /* Change cursor to not-allowed */
-}
-
-button:not([disabled]):not([title="Send"]):not([title="Upload file"]):hover {
-  background-color: #66ca02;
-}
-
-
-
- select {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  padding-right: 15px;
-  margin-bottom: 10px;
-  border: none;
-  background-color: #61a321;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-right: 3px;
-  border-radius: 5px;
-  font-family:  "Rubik", sans-serif;
-  font-weight: 500;
-  text-align: center;
-  font-size: smaller;
-}
-
-select:hover{
-  background-color: #66ca02;
-}
-
-.horizontal > textarea {
-  width: 100%;
-  min-height: 40px;
-  max-height: 100px;
-  resize: vertical;
-}
-
-#action_buttons  {
+#menu_container #action_buttons  {
   display: flex;
 }
 
- .horizontal {
+ #menu_container .horizontal {
   display: flex;
   flex-direction: column;
   padding: 2px;
 } 
 
 
-.horizontal.grid {
+#menu_container .horizontal.grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center; /* Center items vertically */
@@ -96,25 +28,25 @@ select:hover{
   margin-bottom: 10px;
 }
 
-.first-item {
+#menu_container .first-item {
   grid-column: 1 / 3; /* Place in the first column */
   justify-self: center; /* Center the content horizontally within the first column */
 }
 
-.second-item {
+#menu_container .second-item {
   grid-column: 3; /* Place in the third column */
   justify-self: center; /* Center the content horizontally within the third column */
 }
 
 
-.horizontal select, .horizontal button {
+#menu_container .horizontal select, #menu_container .horizontal button {
   width: 100%; /* Adjust width as needed */
   flex: 1;
   margin-bottom: 5px; /* Remove margin-bottom in horizontal layout */
 }
 
 
-#button_container {
+#menu_container {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -122,15 +54,15 @@ select:hover{
   justify-content: end;
 }
 
-.prompt-section {
+#menu_container.prompt-section {
   align-items: end;
 }
 
-.prompt-section-hidden {
+#menu_container .prompt-section-hidden {
   display:none;
 }
 
-.button_icon {
+#menu_container .button_icon {
   display: flex;
   align-items: center; /* Vertically center the icon and text */
   justify-content: center; /* Center content horizontally */
@@ -141,23 +73,23 @@ select:hover{
   border-radius: 8px; /* Rounded corners */
 }
 
-.button_icon .material-symbols-outlined {
+#menu_container .button_icon .material-symbols-outlined {
   margin-right: 8px; /* Space between the icon and text */
 }
 
 @media all and (max-width: 1024px) {
 
-    h3 {
+    #menu_container h3 {
         font-size: 10px;
     }
-    .button_icon .material-symbols-outlined {
+    #menu_container .button_icon .material-symbols-outlined {
     margin-right: 0;
     }
-    .button_text {
+    #menu_container .button_text {
         display: none;
     }
 }
-.header-with-tooltip {
+#menu_container .header-with-tooltip {
   display: flex;
   align-items: center; /* Align items vertically center */
   justify-content: center; /* Align items horizontally center */
@@ -167,25 +99,25 @@ select:hover{
 }
 
 
-.header-with-tooltip h2 {
+#menu_container .header-with-tooltip h2 {
   margin-right: 10px; /* Adjust margin between heading and tooltip */
 }
 
-.tooltip-container {
+#menu_container .tooltip-container {
   position: relative;
   display: inline-block;
 
   /* Adjust the font size and positioning of the icon */
 }
 
-.question-mark-icon{
+#menu_container .question-mark-icon{
   cursor: pointer;
   color: green; /* Example color for the icon */
   font-size: medium;
   transform: translateY(10%);
 }
 
-.tooltip-content {
+#menu_container .tooltip-content {
   visibility: hidden;
   position: absolute;
   top: calc(100% + 5px); /* Position tooltip slightly below the header */
@@ -201,11 +133,11 @@ select:hover{
   /* Additional styling for the tooltip content */
 }
 
-.tooltip-container:hover .tooltip-content {
+#menu_container .tooltip-container:hover .tooltip-content {
   visibility: visible;
 }
 
-#tooltip {
+#menu_container #tooltip {
   z-index: 99;
   width: 170px;
 }

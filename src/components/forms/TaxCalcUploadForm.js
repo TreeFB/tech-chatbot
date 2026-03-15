@@ -225,7 +225,9 @@ const TaxCalcUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
       </div>
       <div className='horizontal'>
         <h3 className='select-inline-label'>Information</h3>
-        <textarea rows="3" disabled={formSubmitted} onChange={(value) => setDescription(value.target.value)}/>  
+        <div>
+          <textarea rows="3" id="frmInfo" disabled={formSubmitted} onChange={(value) => setDescription(value.target.value)}/>  
+        </div>
       </div>          
       <div className='horizontal'>
         <h3 className='select-inline-label'>Due By</h3>

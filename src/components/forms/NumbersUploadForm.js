@@ -26,6 +26,7 @@ const NumbersUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
   const [requestingTeam, setRequestingTeam] = useState("");
   const [writerTeam, setWriterTeam] = useState("");
   const [claimScheme, setClaimScheme] = useState("");
+  const [taskComplexity, setTaskComplexity] = useState("");
   const [activities, setActivities] = useState("");
   const [description, setDescription] = useState("");
   const [writingDueDate, setWritingDueDate] = useState("");
@@ -54,6 +55,12 @@ const NumbersUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
     {id:'Maple',name:'Maple'},
     {id:'Redwood',name:'Redwood'},
     {id:'Sherwood',name:'Sherwood'},
+  ];
+  const complexityOptions = [
+    {id:'N/A',name:'N/A'},
+    {id:'1',name:'1'},
+    {id:'2',name:'2'},
+    {id:'3',name:'3'},
   ];
   const activityOptions = [
     {id:'Numbers Prep',name:'Numbers Prep'},
@@ -133,7 +140,7 @@ const NumbersUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
       var formMessage = `{"submit":true,
         "clientName":"${organisation.name}","claimYears":"${projectList}",
         "capsuleOrganisationId":"${organisation.id}","capsuleOpportunityIds":"${opportunityIdList}","requestingTeam":"${requestingTeam.id}", 
-        "taskActivity":"${activityList}","taskDescription":"${description}",
+        "taskActivity":"${activityList}","taskComplexity":"${taskComplexity.id}","taskDescription":"${description}",
         "requestedTeam":"${writerTeam.id}","claimScheme":"${claimScheme.id}","writingDueDate":"${writingDueDate}"}`;
       sendMessage(formMessage);
       setFormSubmitted(true);
@@ -230,6 +237,19 @@ const NumbersUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
           onChange={(value) => setWriterTeam(value)}
         />      
       </div>
+
+      <div className='horizontal'>
+        <h3 className='select-inline-label'>Task Complexity</h3>
+        <Select
+          className='select-inline'
+          placeholder="Set task complexity"
+          isDisabled={formSubmitted}
+          getOptionLabel={(e) => e.name}
+          getOptionValue={(e) => e.id}
+          options={complexityOptions}
+          onChange={(value) => setTaskComplexity(value)}
+        />      
+      </div>      
 
       <div className='horizontal'>
         <h3 className='select-inline-label'>Activities</h3>

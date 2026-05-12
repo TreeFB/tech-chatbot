@@ -58,9 +58,9 @@ const NumbersUploadForm = ({ selectedOrganisations, setSelectedOrganisations }) 
   ];
   const complexityOptions = [
     {id:'N/A',name:'N/A'},
-    {id:'1',name:'1'},
-    {id:'2',name:'2'},
-    {id:'3',name:'3'},
+    {id:'1',name:'1 (easy)'},
+    {id:'2',name:'2 (medium)'},
+    {id:'3',name:'3 (hard)'},
   ];
   const activityOptions = [
     {id:'Numbers Prep',name:'Numbers Prep'},
